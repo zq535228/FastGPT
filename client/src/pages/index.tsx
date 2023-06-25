@@ -1,27 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Box, Link, Flex, Image, Button } from '@chakra-ui/react';
 import Markdown from '@/components/Markdown';
 import { useMarkdown } from '@/hooks/useMarkdown';
-import { getFilling } from '@/api/system';
-import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { useGlobalStore } from '@/store/global';
 
 import styles from './index.module.scss';
+import axios from 'axios';
+import MyIcon from '@/components/Icon';
 
 const Home = () => {
   const router = useRouter();
   const { inviterId } = router.query as { inviterId: string };
   const { data } = useMarkdown({ url: '/intro.md' });
-  const { isPc } = useGlobalStore();
+  const {
+    isPc,
+    initData: { beianText }
+  } = useGlobalStore();
+  const [star, setStar] = useState(1500);
 
   useEffect(() => {
     if (inviterId) {
       localStorage.setItem('inviterId', inviterId);
     }
   }, [inviterId]);
-
-  const { data: { beianText = '' } = {} } = useQuery(['init'], getFilling);
 
   /* 加载动画 */
   useEffect(() => {
@@ -156,29 +158,31 @@ const Home = () => {
       >
         <Image src="/icon/logo.png" w={['70px', '120px']} h={['70px', '120px']} alt={''}></Image>
         <Box
+          className={styles.textlg}
           fontWeight={'bold'}
           fontSize={['40px', '70px']}
           letterSpacing={'5px'}
-          color={'myBlue.600'}
         >
           检验科AI知识库
         </Box>
-        <Box color={'myBlue.600'} fontSize={['30px', '50px']}>
+        <Box className={styles.textlg} fontWeight={'bold'} fontSize={['30px', '50px']}>
           写论文、写课题、工作总结、考试出题、编文案、翻译、无所不能
         </Box>
-        <Box color={'myBlue.600'} fontSize={['30px', '50px']}>
+        <Box className={styles.textlg} fontWeight={'bold'} fontSize={['30px', '50px']}>
           AI检验大叔
         </Box>
 
-        <Button
-          my={5}
-          fontSize={['xl', '3xl']}
-          h={'auto'}
-          py={[2, 3]}
-          onClick={() => router.push(`/model`)}
-        >
-          开始 AI 之旅
-        </Button>
+        <Flex flexDirection={['column', 'row']} my={5}>
+
+          <Button
+            fontSize={['xl', '3xl']}
+            h={'auto'}
+            py={[2, 3]}
+            onClick={() => router.push(`/model`)}
+          >
+            开始 AI 之旅
+          </Button>
+        </Flex>
       </Flex>
 
       <Box w={'100%'} mt={'100vh'} px={[5, 10]} pb={[5, 10]}>

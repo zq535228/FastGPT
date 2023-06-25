@@ -43,7 +43,7 @@ const PayModal = ({ onClose }: { onClose: () => void }) => {
       setPayId(res.payId);
     } catch (err) {
       toast({
-        title: getErrText(err),
+        title: "请联系检验大叔：13604023002（微信）",
         status: 'error'
       });
     }
@@ -88,7 +88,7 @@ const PayModal = ({ onClose }: { onClose: () => void }) => {
             {!payId && (
               <>
                 <Grid gridTemplateColumns={'repeat(4,1fr)'} gridGap={5} mb={4}>
-                  {[10, 20, 50, 100].map((item) => (
+                  {[10, 20].map((item) => (
                     <Button
                       key={item}
                       variant={item === inputVal ? 'solid' : 'outline'}
@@ -111,13 +111,15 @@ const PayModal = ({ onClose }: { onClose: () => void }) => {
                 </Box>
                 <Markdown
                   source={`
-| 计费项 | 价格: 元/ 1K tokens(包含上下文)|
+| 计费项 | 价格：元/1K tokens|
 | --- | --- |
-| 知识库 - 索引 | 0.001 |
-| chatgpt - 对话 | 0.015 |
-| chatgpt16K - 对话 | 0.015 |
-| gpt4 - 对话 | 0.1 |
-| 文件拆分 | 0.015 |`}
+| 10元 | 每月免费续杯 |
+| 20元 | 永久无限制（自用） |
+| 知识库 - 索引 | 0.001元 |
+| chatgpt - 对话 | 0.015元 |
+| chatgpt16K - 对话 | 0.015元 |
+| gpt4 - 对话 | 0.1元 |
+| 文件拆分 | 0.015元 |`}
                 />
               </>
             )}
