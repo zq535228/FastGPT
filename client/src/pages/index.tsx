@@ -152,7 +152,7 @@ const Home = () => {
       <Flex
         flexDirection={'column'}
         alignItems={'center'}
-        mt={'22vh'}
+        mt={'14vh'}
         position={'absolute'}
         userSelect={'none'}
       >
@@ -165,11 +165,11 @@ const Home = () => {
         >
           检验科AI知识库
         </Box>
-        <Box className={styles.textlg} fontWeight={'bold'} fontSize={['30px', '50px']}>
+        <Box className={styles.textlg} fontWeight={'bold'} fontSize={['15px', '24px']}>
           写论文、写课题、工作总结、考试出题、编文案、翻译、无所不能
         </Box>
-        <Box className={styles.textlg} fontWeight={'bold'} fontSize={['30px', '50px']}>
-          AI检验大叔
+        <Box className={styles.textlg} fontWeight={'bold'} fontSize={['20px', '30px']}>
+          AI.检验大叔
         </Box>
 
         <Flex flexDirection={['column', 'row']} my={5}>
@@ -185,7 +185,7 @@ const Home = () => {
         </Flex>
       </Flex>
 
-      <Box w={'100%'} mt={'100vh'} px={[5, 10]} pb={[5, 10]}>
+      <Box w={'100%'} mt={'60vh'} px={[5, 10]} pb={[5, 10]}>
         <Card p={5} lineHeight={2}>
           <Markdown source={data} isChatting={false} />
         </Card>
