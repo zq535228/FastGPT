@@ -71,16 +71,5 @@ services:
       - PARENT_URL=http://fastgpt:3000
       - PARENT_ROOT_KEY=root_key
 
-  keyadmin:
-    container_name: keyadmin
-    image: justsong/one-api
-    restart: always
-    ports:
-      - 3002:3000
-    environment:
-      - TZ=Asia/Shanghai
-    volumes:
-      - ./keyadmin:/data
-
 networks:
   fastgpt:

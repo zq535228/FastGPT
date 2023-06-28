@@ -1,0 +1,14 @@
+# 非 host 版本, 不使用本机代理
+version: '3.3'
+services:
+
+  keyadmin:
+    container_name: keyadmin
+    image: justsong/one-api
+    restart: always
+    ports:
+      - 3002:3000
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./keyadmin:/data
